@@ -104,6 +104,54 @@ bool haveBetter(int x, int y, int x1, int y1)
 				}
 	return false;
 }
+//for 4 cells
+bool haveBetter4(int x, int y, int x1, int y1)
+{
+    if(x!=x1&&L[x][y]==1&L[x][y+1]==1)
+        {
+            int check1=0; //check 4 ô hàng dưới là chưa khoanh
+            int check2=0;//check  2 ô ở dưới hàng x1 là chưa khoanh
+             if(K[x1][1]==1&&K[x1][2]==1&&K[x1][3]==1&&K[x1][0]==1&&L[x1][0]==0&&L[x1][1]==0&&L[x1][2]==0&&L[x1][3]==0) check1=1;
+             if(x1+1<4)
+                {
+                    if(K[x1][y]==1&&K[x1][y1]==1&&K[x1+1][y]==1&&K[x1+1][y1]==1&&L[x1][y]==0&&L[x1][y1]==0&&L[x1+1][y]==0&&L[x1+1][y1]==0) check2=1;
+                }
+            if(check1==1||check2==1) return true;
+        }
+
+         if(x!=x1&&L[x][y]==1&L[x1][y]==1)
+            {
+                if(y1<3)
+                    {
+                        if(K[x][y1+1]==1&&L[x][y1+1]==0&&K[x1][y1+1]==1&&L[x1][y1+1]==0&&L[x1][y1]==0&&L[x][y1]==0)return true;
+                     }
+            }
+            if(x==0&&x1==1&&L[x1][y]==0&&L[x][y]==0)
+                {
+                    for(int i=0;i<4;i++)
+                        {
+                            if(K[i][y]==0) return false;
+                        }
+                    if(y1<3)
+                        {
+                             if(K[x][y1+1]==1&&L[x][y1+1]==0&&K[x1][y1+1]==1&&L[x1][y1+1]==0&&L[x1][y1]==0&&L[x][y1]==0)return true;
+                        }
+                }
+                //delete under staments if necessery
+                if(L[x][y]==1&&L[x1][y]==1)
+                    {
+                        if(y1<=3)
+                            {
+                                for(int i=0;i<4;i++)
+                                {
+                                     if(K[i][y1]==0) return false;
+                                }
+                                 return true;
+                            }
+
+                    }
+        return false;
+}
 string getString(int x,int y,int x1,int y1, int s)
 {
 	if(s==16) return "1";
@@ -319,6 +367,7 @@ void checkAll(int s)
                             {
                                 //do nothing
                             }
+                            else
                             if(K[0][0]==1&&L[0][0]==0&&K[2][3]==1&&L[2][3]==0)
                             {
                                 //do nothing
@@ -335,6 +384,7 @@ void checkAll(int s)
                             {
                                 //do nothing
                             }
+                            else
                             if(K[1][0]==1&&L[1][0]==0&&K[3][3]==1&&L[3][3]==0)
                             {
                                 //do nothing
@@ -362,6 +412,7 @@ void checkAll(int s)
                             {
                                 //do nothing
                             }
+                            else
                             if(K[0][2]==1&&L[0][2]==0&&K[3][0]==1&&L[3][0]==0)
                             {
                                 //do nothing
@@ -378,6 +429,7 @@ void checkAll(int s)
                             {
                                 //do nothing
                             }
+                            else
                             if(K[0][3]==1&&L[0][3]==0&&K[3][1]==1&&L[3][1]==0)
                             {
                                 //do nothing
@@ -420,6 +472,20 @@ void checkAll(int s)
                                                 }
                                         }
                                     }
+                                    else
+                                    if(s==4)
+                                        {
+                                            if(haveBetter4(x,y,x1,y1)==true) continue;
+                                            else
+                                                {
+                                                     result[l++]=getString(x,y,x1,y1,s);
+                                                     for(int i=x;i<=x1;i++)
+                                                     for(int j=y;j<=y1;j++)
+                                                    {
+                                                         L[i][j]=1;
+                                                    }
+                                                }
+                                        }
                                     else
                                     {
                                         result[l++]=getString(x,y,x1,y1,s);
@@ -606,3 +672,4 @@ int main()
 		}
 	  return 0;
 }
+
