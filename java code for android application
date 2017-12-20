@@ -1,9 +1,9 @@
-package helloworld.com.taquangtu132gmail.taquangtu.linearlayout;
+package helloworld.com.taquangtu132gmail.taquangtu.kmap;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -536,7 +536,7 @@ public class MainActivity extends AppCompatActivity {
     private ToggleButton c13;
     private ToggleButton c14;
     private ToggleButton c15;
-    private Button b_result;
+    private ImageButton b_result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -589,7 +589,6 @@ public class MainActivity extends AppCompatActivity {
         c13=(ToggleButton) findViewById(R.id.toggleButton13);
         c14=(ToggleButton) findViewById(R.id.toggleButton14);
         c15=(ToggleButton) findViewById(R.id.toggleButton15);
-        b_result = (Button) findViewById(R.id.buttonResult);
+        b_result = (ImageButton) findViewById(R.id.buttonResult);
     }
 }
-
