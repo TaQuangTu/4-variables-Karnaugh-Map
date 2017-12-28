@@ -514,6 +514,34 @@ class Solution
             t+="+";
         }
         if(l-1>=0) t+=changeString(result[l-1]);
+        //col 1
+        if(t=="A'C'+A'B'+BC'") return "A'B'+BC'";
+        if(t=="A'B'+A'D+BD") return "A'B'+BD";
+        if(t=="A'B'+A'C+BC") return "A'B'+BC";
+        if(t=="A'D'+BD'+A'B'") return "BD'+A'B'";
+        if(t=="B'C'+AB'+AC'") return "AB'+AC'";
+        if(t=="B'D+A'B'+AD") return "A'B'+AD";
+        if(t=="B'C+A'B'+AC") return "A'B'+AC";
+        if(t=="B'D'+AD'+A'B'") return "AD'+A'B'";
+//col 2
+        if(t=="BC'+AB'+AC'") return "AB'+AC'";
+        if(t=="A'B+BD+AD") return "A'B+AD";
+        if(t=="A'B+BC+AC") return "A'B+AC";
+        if(t=="BD'+AD'+A'B") return "AD'+A'B";
+        if(t=="B'C'+A'C'+A'B") return "B'C'+A'B";
+        if(t=="B'D'+A'D'+A'B") return "B'D'+A'B";
+//col 3
+        if(t=="B'C'+AC'+AB") return "AC'+AB";
+        if(t=="B'D'+AD'+AB") return "B'D'+AB";
+        if(t=="A'C'+BC'+AB") return "A'C'+AB";
+        if(t=="A'D'+BD'+AB") return "A'D'+AB";
+//col 4
+        if(t=="BC'+AC'+AB'") return "BC'+AB'";
+        if(t=="BD'+AD'+AB'") return "BD'+AB'";
+        if(t=="B'C'+A'C'+AB'") return "A'C'+AB'";
+        if(t=="B'D+AB'+A'D") return "AB'+A'D";
+        if(t=="B'C+AB'+A'C") return "AB'+A'C";
+        if(t=="B'D'+A'D'+AB'") return "A'D'+AB'";//
         return t;
     }
 };
@@ -537,8 +565,10 @@ public class KmapActivity extends AppCompatActivity {
     private ToggleButton c14;
     private ToggleButton c15;
     private ImageButton b_result;
+    private ImageButton b_reset;
     private void conectViews()
     {
+        b_reset=(ImageButton) findViewById(R.id.bt_reset);
         tv_result=(TextView) findViewById(R.id.textViewResult);
         c0=(ToggleButton) findViewById(R.id.toggleButton0);
         c1=(ToggleButton) findViewById(R.id.toggleButton1);
@@ -566,6 +596,27 @@ public class KmapActivity extends AppCompatActivity {
         //Anh xa cac View
         conectViews();
         //thuc thi khi Button duoc nhan
+        b_reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                KmapActivity.this.c0.setChecked(false);
+                KmapActivity.this.c1.setChecked(false);
+                KmapActivity.this.c2.setChecked(false);
+                KmapActivity.this.c3.setChecked(false);
+                KmapActivity.this.c4.setChecked(false);
+                KmapActivity.this.c5.setChecked(false);
+                KmapActivity.this.c6.setChecked(false);
+                KmapActivity.this.c7.setChecked(false);
+                KmapActivity.this.c8.setChecked(false);
+                KmapActivity.this.c9.setChecked(false);
+                KmapActivity.this.c10.setChecked(false);
+                KmapActivity.this.c11.setChecked(false);
+                KmapActivity.this.c12.setChecked(false);
+                KmapActivity.this.c13.setChecked(false);
+                KmapActivity.this.c14.setChecked(false);
+                KmapActivity.this.c15.setChecked(false);
+            }
+        });
         b_result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -593,3 +644,4 @@ public class KmapActivity extends AppCompatActivity {
         });
     }
 }
+
